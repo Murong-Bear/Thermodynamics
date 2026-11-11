@@ -1,0 +1,329 @@
+\documentclass[12pt]{article}
+
+\usepackage[a4paper,margin=1in,headheight=20pt]{geometry}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+
+% ---------- Information ----------
+\newcommand{\studentname}{Elara}
+\newcommand{\coursename}{Thermodynamics}
+\newcommand{\sheetnumber}{Problem Sheet 0}
+\newcommand{\assignmenttitle}{Basic Concepts}
+\newcommand{\submissiondate}{\today}
+
+\newcommand{\problem}[2]{%
+    \par\vspace{1em}
+    \noindent\textbf{#1\quad #2}
+    \par\smallskip
+}
+
+% ---------- Header for main pages ----------
+\pagestyle{fancy}
+\fancyhf{}
+
+\lhead{\studentname}
+\chead{\sheetnumber}
+\rhead{\coursename}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\cfoot{\thepage}
+
+\begin{document}
+
+% ---------- Cover page ----------
+\begin{titlepage}
+    \centering
+
+    {\large \coursename\par}
+
+    \vfill
+
+    {\LARGE\bfseries \sheetnumber\par}
+
+    \vspace{1cm}
+
+    {\large \assignmenttitle\par}
+
+    \vspace{1cm}
+
+    {\large \studentname\par}
+
+    \vspace{0.5cm}
+
+    {\large \submissiondate\par}
+
+    \vfill
+\end{titlepage}
+
+% ---------- Main document ----------
+\pagebreak
+
+\section*{\assignmenttitle}
+
+\problem{0.1}{}\qquad
+\[
+\begin{aligned}
+    \frac{T_1}{T_2} &= \left(\frac{V_1}{V_2}\right),\\
+    \\
+    T_1 =& T_2\left(\frac{V_1}{V_2}\right)
+    =10\left(\frac{10^3 \times 10^{-18}}{10^{-3}}\right)^{2/3} = 10^{-7} \, s. 
+\end{aligned}
+\]
+
+\smallbreak
+\problem{0.2}{} A reversable process is one such that the system can be 
+restored to its intial state without any net change in the rest of the universe.
+
+A quasistatic process is a sequence of equilibrium states that each state in the sequence is what the equilibrium state would be iff the constraints on the system had some given value.
+
+Breathing is a process in which the system is not in equilibrium with its surroundings, it is not quasistatic.
+Circulation of blood is a process in which the system is in equilibrium, so it is quasistatic.
+Digestion, mietosis and osmosis are processes in which the system is not in equilibrium, so they are not quasistatic.
+
+\smallbreak
+\problem{0.3}{} Let the letters Q,R,I,T denote the terms quasistatic, reversible, irreversible and
+isothermal, respectively.
+
+\noindent\textbf{(a)} a gas slowly expanding in a thermally isolated cylinder fitted with a frictionless
+piston. \textbf{Q,R}
+
+\noindent\textbf{(b)} a volcanic eruption. \textbf{I}
+
+\noindent\textbf{(c)} a steel nail oxidising (rusting) while immersed in a bucket of water. \textbf{I}
+
+\noindent\textbf{(d)} ice forming over a pool of water on a still winter evening. \textbf{Q,R,T}
+
+\noindent\textbf{(e)} a force pushes an ordinary book across an ordinary table. \textbf{I}
+
+
+\smallbreak
+\problem{0.4}{} 
+\noindent\textbf{(i)} \qquad Bulk modulus is defined by
+\begin{equation}
+    B = -V \frac{\partial p}{\partial V}.
+\end{equation}
+The bulk modulus is a measure of the resistance of a substance to uniform compression. Solid has a higher buld modulus than gas because solid is more incompressible than gas.
+
+\break
+
+\noindent\textbf{(ii)} \qquad The isothermal compressibility is defined by
+\begin{equation}
+    \kappa_T = -\frac{1}{V}\left(\frac{\partial V}{\partial p}\right)_T.
+\end{equation}
+For van der Waals gas of equation of state
+\begin{equation}
+    \left(p + \frac{N^2a}{V^2}\right)(V-b) = Nk_BT,
+\end{equation}
+and in the limit $V \gg Nb$, we have
+\begin{equation}
+    p = \frac{Nk_BT}{V} - \frac{N^2a}{V^2}.
+\end{equation}
+
+The isothermal compressibility can be calculated as
+\[
+\begin{aligned}
+    \kappa_T &= -\frac{1}{V}\left(\frac{\partial V}{\partial p}\right)_T
+    = -\frac{1}{V}\left(\frac{\partial p}{\partial V}\right)_T^{-1}
+    = -\frac{1}{V}\left(-\frac{Nk_BT}{V^2} + \frac{2N^2a}{V^3}\right)^{-1} \\
+    & = -\frac{1}{V} \left(-\frac{p}{V} + \frac{N^2a}{V^3}\right)^{-1} = \left(p - \frac{N^2a}{V^2}\right)^{-1}.
+\end{aligned}
+\]
+
+
+\smallbreak
+\problem{0.5}{Function of state} A function of state is any physical quantity that has a well-
+defined value for each equilibrium state of the system.
+
+\noindent(a)  The depth of the water is not a function of state because it is not in equilibrium state, water is constantly evaporating and flowing out.
+
+\noindent(b) The total amount of water in the lake is a function of state because it is a well-defined value in equlibrium state.
+
+\noindent(c) The mass of river water in the lake is not a function of state because the river water amount is not in equilibrium but changing.
+
+\noindent(d) The temperature of the water is not a function of state because when evaporation occurs, the temperature of the water changes.
+
+\noindent(e) The mass of water that has left the lake by evaporation is not a function of state because this amount keeps increasing and is not in equilibrium state.
+
+\noindent(f) The volume of rain water in the lake is not a function of state because the rain water is evaporating and flowing out, so it is not in equilibrium state.
+
+\noindent(g) The rate of evaporation is a function of state in give temperature and humidity because it is a well-defined constant value.
+
+
+\problem{0.6}{} (f) changes to a fucntion of state because its value is 0.
+
+
+\pagebreak
+\problem{0.7}{}
+
+For $n$ moles of gas with properties $p, V, T$, one mole has properties $p, V/n, T$. 
+Therefore, the equation of state of one mole gas becomes,
+\begin{equation}
+    \left(p + \frac{an^2}{V^2} + \frac{d n^3}{V^3}\right) \left(\frac{V}{n} - b - \frac{f n}{V}\right) = RT
+\end{equation}
+
+
+\problem{0.8}{}
+\noindent(a)
+First along the path (0,0) tp (0,1) to (1,1).
+\begin{equation}
+    I = \int_0^1 0\, \mathrm{d}y + \int_0^1 1 \,\mathrm{d}x = 1.
+\end{equation}
+ Then along the diagonal line $x=y$
+\begin{equation}
+    I = \int_0^1 x^2 + x^2 \,\mathrm{d}x = \int_0^1 2x^2 \,\mathrm{d}x = \frac{2}{3}.
+\end{equation}
+The two paths give different results, so the integral is path dependent. The quantity $y^2 \mathrm{d}x + 2xy \mathrm{d}y$ is not an exact differential.
+\smallbreak
+\noindent(b) The equation gives 
+\begin{equation}
+    f_x = y^2, \qquad f_y = 2xy.
+\end{equation}
+Integrate $f_x$ with respect to $x$ gives
+\begin{equation}
+    f(x,y) = xy^2 + g(y),
+\end{equation}
+where $g(y)$ is a function of $y$ only. Differentiate $f(x,y)$ with respect to $y$ gives
+\begin{equation}
+    f_y = 2xy + g'(y) = 2xy \implies g'(y) = 0 \implies g(y) = C,
+\end{equation}
+where $C$ is a constant, which is 0 here. Therefore, the function of state is
+\begin{equation}
+    f(x,y) = xy^2.
+\end{equation}
+
+
+\problem{0.9}{} 
+\noindent(i) An improper differential is a well-defined samll quantity which is not the differential of any function.
+The quantity
+\begin{equation}
+    C_V\mathrm{d}T + \frac{RT}{V}\mathrm{d}V
+\end{equation}
+gives,
+\begin{equation}
+    f_{T} = C_V, \qquad f_{V} = \frac{RT}{V}.
+\end{equation}
+For an exact differential, we have
+\begin{equation}
+    \frac{\partial C_V}{\partial V} = \frac{\partial}{\partial T}\left(\frac{RT}{V}\right).
+\end{equation}
+But here, $\frac{\partial C_V}{\partial V} = 0$ and $\frac{\partial}{\partial T}\left(\frac{RT}{V}\right) = \frac{R}{V}$, so the two sides are not equal. Therefore, the quantity is an improper differential.
+
+\pagebreak
+\noindent(ii) 
+\begin{equation}
+    \frac{\mathrm{d}Q}{T} = \frac{C_V}{T}\mathrm{d}T + \frac{R}{V}\mathrm{d}V
+\end{equation}
+is a proper differential because
+\begin{equation}
+    \frac{\partial (C_V / T)}{\partial V} = \frac{\partial (R/V)}{\partial T} = 0.
+\end{equation}
+
+
+\problem{0.10}{}
+Consider $x$ as a function of $y$ and $z$, so $x = x(y,z)$. Then we have
+\begin{equation}
+    \mathrm{d}x = \left(\frac{\partial x}{\partial y}\right)_z \, \mathrm{d}y + \left(\frac{\partial x}{\partial z}\right)_y \, \mathrm{d}z.
+    \label{eq:1}
+\end{equation}
+Rearranging into the form of $\mathrm{d}z$ gives
+\begin{equation}
+    \mathrm{d}z = \left( \frac{\partial z}{\partial x}\right)_y \, \mathrm{d}x + \left( \frac{\partial z}{\partial y}\right)_x \, \mathrm{d}y.
+    \label{eq:2}
+\end{equation}
+Substituting \eqref{eq:2} into \eqref{eq:1} gives
+\begin{equation}
+    \mathrm{d}x = \left(\frac{\partial x}{\partial y}\right)_z \, \mathrm{d}y + \left(\frac{\partial x}{\partial z}\right)_y \left[ \left( \frac{\partial z}{       \partial x}\right)_y \, \mathrm{d}x + \left( \frac{\partial z}{\partial y}\right)_x \, \mathrm{d}y \right].    
+\end{equation}
+The terms multiplying $\mathrm{d}x$ gives the reciprocal relation
+\begin{equation}
+    \left( \frac{\partial x}{\partial z}\right)_y = \frac{1}{\left( \frac{\partial z}{\partial x}\right)_y}.
+\end{equation}
+The terms multiplying $\mathrm{d}y$ gives the reciprocity theorem
+\begin{equation}
+    \left(\frac{\partial x}{\partial y}\right)_z \left( \frac{\partial y}{\partial z}\right)_x \left( \frac{\partial z}{\partial x}\right)_y = -1.
+\end{equation}
+
+
+\problem{0.11}{}
+Along the path $p, y = y(x)$, by the Chain rule, we have
+\begin{equation}
+    \frac{\mathrm{d}Q_{(p)}}{\mathrm{d}{x}} = \frac{\mathrm{d}Q_{(p)}}{\mathrm{d}{y}} \frac{\mathrm{d}y}{\mathrm{d}x} \bigg|_{(p)}
+\end{equation}
+
+
+
+\problem{0.12}{}
+$f$ is a function of first order of $x$.
+
+
+\pagebreak
+
+\problem{0.13}{}
+\begin{equation}
+\begin{aligned}
+     \mathrm{d}\ln{C}&= \mathrm{d}\ln{A} - \mathrm{d}\ln{B} = 0,\\
+     \\
+      \frac{\partial \ln{A}}{\partial x} \bigg|_y \, \mathrm{d}x &+ \frac{\partial \ln{A}}{\partial y} \bigg|_x \, \mathrm{d}y = \frac{\partial \ln{B}}{\partial x} \bigg|_y \, \mathrm{d}x + \frac{\partial \ln{B}}{\partial y} \bigg|_x \, \mathrm{d}y. \\
+\end{aligned}
+\end{equation}
+Rearrange and divide both sides by $\mathrm{d}x$ gives
+\begin{equation}
+    \begin{aligned}
+        \frac{\partial \ln{A}}{\partial x} \bigg|_y + \frac{\partial \ln{A}}{\partial y} \bigg|_x \, \frac{\mathrm{d}y}{\mathrm{d}x} = \frac{\partial \ln{B}}{\partial x} \bigg|_y + \frac{\partial \ln{B}}{\partial y} \bigg|_x \, \frac{\mathrm{d}y}{\mathrm{d}x},\\
+        \\
+    \end{aligned}
+\end{equation}
+\[
+\left.\frac{\partial x}{\partial y}\right|_C
+=
+\frac{
+\left.\dfrac{\partial\ln B}{\partial y}\right|_x
+-
+\left.\dfrac{\partial\ln A}{\partial y}\right|_x
+}{
+\left.\dfrac{\partial\ln A}{\partial x}\right|_y
+-
+\left.\dfrac{\partial\ln B}{\partial x}\right|_y
+}.
+\]
+
+
+\problem{0.14}{}
+The equation of van der Waals gas is
+\begin{equation}
+    \begin{aligned}
+      \left(p + \frac{N^2a}{V^2}\right)(V-b) &= nRT,\\
+      p = \frac{nRT}{V-b} - \frac{N^2a}{V^2}.
+    \end{aligned}
+\end{equation}
+And the equation of state of ideal gas is
+\begin{equation}
+    p = \frac{nRT}{V}.
+\end{equation}
+They both form a linear relation between $p$ and $T$ and as they are calibrated at $0^\circ C$ and $100^\circ C$, the two lines must intersect at these two points. Therefore, there is no difference between the two lines.
+
+\pagebreak
+
+\problem{0.15}{}
+Solve this equation gives
+\begin{equation}
+    p(V) = \frac{1 + \alpha T}{\kappa} - \frac{V}{\kappa V_0}
+\end{equation}
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{../isotherms.png}
+  \caption{Isotherms for the solid described by the given equation of state.}
+  \label{fig:isotherms}
+\end{figure}
+
+These lines are expected to be much steeper than a gas isotherm, since solids are much less compressible than gases.
+
+\smallbreak
+\smallbreak
+\problem{0.16}{}
+Zeroth law states that two systems, each separately in thermal equilibrium with a third, are
+in equilibrium with each other. So all different isotherms are in equilibrium with each other, and they cannot cross each other. If they cross, it means that the two systems are in equilibrium with the third system but not in equilibrium with each other, which violates the zeroth law.
+
+\end{document}
