@@ -1,0 +1,265 @@
+\documentclass[12pt]{article}
+
+\usepackage[a4paper,margin=1in,headheight=20pt]{geometry}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb}
+
+% ---------- Information ----------
+\newcommand{\studentname}{Murong}
+\newcommand{\coursename}{MM}
+\newcommand{\sheetnumber}{Raw Paper}
+\newcommand{\assignmenttitle}{}
+\newcommand{\submissiondate}{\today}
+
+\newcommand{\problem}[2]{%
+    \par\vspace{1em}
+    \noindent\textbf{#1\quad #2}
+    \par\smallskip
+}
+
+% ---------- Header for main pages ----------
+\pagestyle{fancy}
+\fancyhf{}
+
+\lhead{\studentname}
+\chead{\sheetnumber}
+\rhead{\coursename}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\cfoot{\thepage}
+
+\setlength{\jot}{7pt}
+
+\begin{document}
+
+% ---------- Cover page ----------
+\begin{titlepage}
+    \centering
+
+    {\large \coursename\par}
+
+    \vfill
+
+    {\LARGE\bfseries \sheetnumber\par}
+
+    \vspace{1cm}
+
+    {\large \assignmenttitle\par}
+
+    \vspace{1cm}
+
+    {\large \studentname\par}
+
+    \vspace{0.5cm}
+
+    {\large \submissiondate\par}
+
+    \vfill
+\end{titlepage}
+
+% ---------- Main document ----------
+\pagebreak
+
+\section*{\assignmenttitle}
+
+\problem{1}{Fourier Transform}
+\begin{align}
+    f(t) &= \frac{1}{\tau \sqrt{2 \pi}} exp\left(-\frac{t^2}{2 \tau^2}\right) \\
+    \tilde{f}(\omega) &= \frac{1}{\tau 2 \pi} \int_{-\infty}^{\infty} exp \left(-\frac{t^2}{2 \tau^2}\right) exp(-\mathrm{i} \omega t)\, dt
+    &= 
+\end{align}
+
+\problem{2}{Toturial}
+\begin{equation}
+    \begin{gathered}
+      \langle f,g\rangle \\
+      T^\dagger \\
+      L^2(\mathbb{R}) \\
+      \langle f,g  \rangle = \int_{\mathbb{R}} f(x)^*g(x)\,dx \\
+      T = \frac{d^2}{dx^2} + 2c\frac{d}{dx} + 1, \qquad Ty=f.
+    \end{gathered}
+\end{equation}
+
+\begin{equation}
+    \begin{gathered}
+        \sum_{k=0}^{\infty} \\
+        \sum_{k=0}^{\infty} a_k x^k \\
+        a_{k+2} = \cdots
+        \quad \text{for } k=0,1,2,\ldots\\
+        \delta_{nm} \\
+        y(x) = \sum_{k=0}^{\infty} a_k x^k,
+        \qquad
+        a_{k+2} = \frac{k(k+1)-n(n+1)}{(k+1)(k+2)}a_k.
+    \end{gathered}
+\end{equation}
+
+\pagebreak
+
+\problem{3}{Equations...}
+\begin{align}
+    &W(y_1,y_2) = y_1y_2' - y_1'y_2 \\
+    &G(x,t) = \frac{y_1(t)y_2(x) - y_1(x)y_2(t)}{W(t)} \\
+    &y(x) = \int_{x_0}^x G(x,t)f(t)\,dt
+\end{align}
+
+\problem{4}{Hermitian, unitary and commutator notation}
+\begin{equation}
+    \begin{gathered}
+    T\circ s\\
+    \left[T,S\right]\\
+    T^\dagger = T\\
+    U^\dagger U = I\\
+    Tv = \lambda v\\
+    \Longleftarrow\\
+    \mathbb{R}\\
+    [T,S] := T\circ S - S\circ T,
+    \qquad
+    T^\dagger = T.\\
+    U^\dagger U = U U^\dagger = I
+    \end{gathered}
+\end{equation}
+
+\pagebreak
+
+\problem{5}{Matrices and vectors}
+\begin{equation}
+    \begin{gathered}
+        A = 
+        \begin{bmatrix}
+        a & b \\c & d
+        \end{bmatrix},
+        \qquad
+        v = 
+        \begin{pmatrix}
+            v_1 \\ v_2
+        \end{pmatrix} \\
+        A^{\mathsf T} \\
+        \det(A)  \\ % Matrix transpose
+        H_n(x) P_n(x) L_n(x) \mathcal{L} J_\nu(x) \Gamma(x)\frac{d^n}{dx^n}w(x)\langle H_n,H_m\rangle = 0 \\
+        H_n(x)=(-1)^n e^{x^2} \frac{d^n}{dx^n}e^{-x^2} \\
+        y'' - 2xy' + 2ny = 0\\
+        \langle H_n,H_m \rangle
+        = \int_{-\infty}^{\infty} e^{-x^2} H_n(x)H_m(x)\,dx
+        = \sqrt{\pi}\,2^n n!\,\delta_{nm} \\
+        x^2 y'' + xy' + (x^2-\nu^2)y = 0,
+        \qquad
+        J_\nu(x) = 
+        \left(\frac{x}{2}\right)^\nu
+        \sum_{k=0}^{\infty}
+        \frac{(-1)^k}{k!\,\Gamma(k+\nu+1)}
+        \left(\frac{x}{2}\right)^{2k} \\
+        T_{\mathrm{SL}} y = 
+        \frac{1}{w(x)} \left[\frac{d}{dx}\left(p(x)\frac{dy}{dx}\right) + q(x)y\right]\\
+        T_{\mathrm{SL}}y = \lambda y.
+    \end{gathered}
+\end{equation}
+
+\problem{6}{Harmonci oscillator notation}
+$\epsilon, \hbar, \Psi, \psi, a^\dagger, a, N$
+\begin{equation}
+    \begin{gathered}
+      H = \frac{1}{2}\left(-\frac{d^2}{dx^2}+x^2\right),
+      \qquad
+      H\lvert n\rangle = \left(n+\frac{1}{2}\right)\lvert n\rangle \\
+      \text{for all } x\\
+      a = \frac{1}{\sqrt{2}}\left(x+\frac{d}{dx}\right),
+      \qquad
+      a^\dagger = \frac{1}{\sqrt{2}}\left(x-\frac{d}{dx}\right) \\
+      \left\{x\in\mathbb{R}\ \middle| \ x>0\right\} \\
+      \left\{x\in\mathbb{R}\ \middle| \ x>0\right\}
+    \end{gathered}
+\end{equation}
+
+\pagebreak
+\problem{7}{Orthogonal Polynomials}
+\begin{equation}
+\begin{split}
+  \phi_0 &= 1, \\
+  \langle \phi_0,\phi_0  \rangle ^{\frac{1}{2}}&=\left(\int_{-1}^{1} \mathrm{d}u\right) = \sqrt{2},\\
+  \hat{\phi}_0 &= \frac{1}{\sqrt{2}},\\
+\end{split}
+\end{equation}
+
+The second polynomial is given by
+\begin{equation}
+\begin{split}
+    \phi_1 = y_1 - \hat{\phi}_0 \langle \hat{\phi_0} \lvert y_1 \rangle\\
+    \text{it is easily to see that } \langle \hat{\phi}_0 \lvert y_1 \rangle = 0,\\
+    \text{so } \phi_1 = x,\\
+    \hat{\phi}_1 = \phi_1 \left(\int_{-1}^{1} u \times u \,\mathrm{d}u\right)^{-\frac{1}{2}} = \sqrt{\frac{3}{2}}\,x.\\
+\end{split}
+\end{equation}
+
+The third polynomial is likely given by
+\begin{equation}
+\begin{split}
+  \phi_2 =& \,y_2 - \hat{\phi}_1 \langle \hat{\phi}_1 \lvert y_2  \rangle - \hat{\phi}_0 \langle \hat{\phi}_0 \lvert y_2  \rangle,\\
+  &= x^2 - 0 - \sqrt{\frac{1}{2}} \left(\int_{-1}^{1} \sqrt{\frac{1}{2}} \times x^2 \,\mathrm{d}u\right) = x^2 - \frac{1}{3},\\
+\end{split}
+\end{equation}
+which, on normalising gives
+\begin{equation}
+    \hat{\phi_2} = \phi_2 \left(\int_{-1}^{1} (x^2 - \frac{1}{3})^2 \,\mathrm{d}u \right)^{-\frac{1}{2}} = \sqrt{\frac{5}{8}} \left(3x^2 - 1\right).
+\end{equation}
+
+\pagebreak
+\problem{8}{Legendre Polynomials}
+In the Hilbert space $L^2([-1,1])$, Legendre polynomials' Rodriguez formula reads
+\begin{equation}
+    P_n(x) = \frac{1}{2^nn!}\frac{\mathrm{d}^n}{\mathrm{d}x^n}(x^2 - 1)^n \quad \Longrightarrow \quad K_n = 2^nn!,
+\end{equation}
+thus, the Legendre differential equation is given by
+
+\begin{equation}
+    (1 - x^2)y'' - 2xy' + n(n+1)y = 0.
+\end{equation}
+
+We also have the generating function of Legendre polynomials defined as
+\begin{equation}
+    G(x,z) = \sum_{n=0}^{\infty}L_n(x)z^n
+\end{equation}
+
+\problem{9}{Hermite Polynomials}
+TheHermite polynomials are defined on the interval $[a,b] = [-\infty,\infty]=\mathbb{R}$, they are denoted by $H_n$ with Rodriguez fromula reads
+\begin{equation}
+    H_n(x) = (-1)^n\mathrm{e}^{x^2}\frac{\mathrm{d}}{\mathrm{d}x^n}\,\mathrm{e}^{-x^2},
+\end{equation}
+from this formula, it is easy to read off the coefficients $k_n$ and $k_n'$ of the leading and subleading monomials $x^n$ and $x^{n-1}$ in $H_n$ as
+\begin{equation}
+    k_n = 2^n, \qquad k_n' = 0.
+\end{equation}
+The differential equation for Hemite polynomials is
+\begin{equation}
+    y'' - 2xy' + 2ny = 0.
+\end{equation}
+The generation function
+\begin{equation}
+    G(x,z) = \sum_{n=0}^{\infty}H_n(x)\frac{z^n}{n!} = \mathrm{e}^{2xz - z^2}.
+\end{equation}
+
+\problem{10}{Gamma Function}
+The Gamma function is defined by
+\begin{equation}
+    \Gamma(x) = \int_{0}^{\infty}e^{-t}t^{x-1}\,\mathrm{d}t,
+\end{equation}
+and satisfies the functional equation
+\begin{equation}
+    \Gamma(x+1) = x\Gamma(x).
+\end{equation}
+And the Gamma function is related to the factorial function by
+\begin{equation}
+    \Gamma(n+1) = n!.
+\end{equation}
+
+\problem{11}{Bessel Function}
+The Bessel function of the first kind is defined by
+\begin{equation}
+    J_{\pm \nu}(x) := \left(\frac{x}{2}\right)^{\pm \nu}\sum_{k=0}^{\infty}\frac{(-1)^k}{k!\,\Gamma(k\pm \nu+1)}\left(\frac{x}{2}\right)^{2k},
+\end{equation}
+
+The Bessel function of the second kind is defined by
+\begin{equation}
+    N_{\nu}(x) = \frac{J_{\nu}(x) \cos(\nu \pi) - J_{-\nu}(x)}{\sin(\nu \pi)}.
+\end{equation}
+
+\end{document}

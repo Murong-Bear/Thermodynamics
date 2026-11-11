@@ -1,0 +1,772 @@
+\documentclass[12pt]{article}
+
+\usepackage[a4paper,margin=1in,headheight=20pt]{geometry}
+\usepackage{fancyhdr}
+\usepackage{amsmath,amssymb}
+
+% ---------- Information ----------
+\newcommand{\studentname}{Elara}
+\newcommand{\coursename}{Mathematical Methods}
+\newcommand{\sheetnumber}{Problem Sheet 3}
+\newcommand{\assignmenttitle}{Ordinary Differential Equations and Special Functions}
+\newcommand{\submissiondate}{\today}
+
+\newcommand{\problem}[2]{%
+    \par\vspace{1em}
+    \noindent\textbf{#1\quad #2}
+    \par\smallskip
+}
+
+% ---------- Header for main pages ----------
+\pagestyle{fancy}
+\fancyhf{}
+
+\lhead{\studentname}
+\chead{\sheetnumber}
+\rhead{\coursename}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\cfoot{\thepage}
+
+\begin{document}
+
+% ---------- Cover page ----------
+\begin{titlepage}
+    \centering
+
+    {\large \coursename\par}
+
+    \vfill
+
+    {\LARGE\bfseries \sheetnumber\par}
+
+    \vspace{1cm}
+
+    {\large \assignmenttitle\par}
+
+    \vspace{1cm}
+
+    {\large \studentname\par}
+
+    \vspace{0.5cm}
+
+    {\large \submissiondate\par}
+
+    \vfill
+\end{titlepage}
+
+% ---------- Main document ----------
+\pagebreak
+
+\section*{\assignmenttitle}
+
+\problem{1}{Green Function}
+\noindent\textbf{(a)}\quad For the differential equation
+\begin{equation}
+\begin{split}
+    Ty &= 0,\\
+    Ty &= \frac{\mathrm{d}^2 y}{\mathrm{d}x^2} + 2c \frac{\mathrm{d}y}{\mathrm{d}x} + 1,\\
+\end{split}
+\end{equation}
+The characteristic equation is
+\begin{equation}
+    r^2 + 2cr + 1 = 0,
+\end{equation}
+we have two cases for the roots of the characteristic equation:
+\begin{enumerate}
+    \item If $c^2 - 1 > 0$, the roots are real and distinct, given by, which does not satisfy the boundary conditions,
+    \begin{equation}
+        r_1 = -c + \sqrt{c^2 - 1}, \quad r_2 = -c - \sqrt{c^2 - 1}.
+    \end{equation}
+    \item If $c^2 - 1 < 0$, the roots are complex conjugates, given by, which satisfy the boundary conditions,
+    \begin{equation}
+        r_1 = -c + i\sqrt{1 - c^2}, \quad r_2 = -c - i\sqrt{1 - c^2}.
+    \end{equation}
+\end{enumerate}
+Compare the second case with the equation
+\begin{equation}
+    y'' + 2cy' + y = 0,
+\end{equation}
+we have 
+\begin{equation}
+    \omega = \sqrt{1 - c^2}.
+\end{equation}
+
+\smallskip
+
+\noindent\textbf{(b)}\quad The Wronski determinant is given by
+\begin{equation}
+\begin{aligned}
+  W &= y_1y_2' - y_1'y_2,\\
+    &= e^{-cx} \cos(\omega x) \left(-c e^{-cx} \sin(\omega x) + \omega e^{-cx} \cos(\omega x)\right)\\
+    &\quad - \left(e^{-cx} \sin(\omega x)\right) \left(-c e^{-cx} \cos(\omega x) - \omega e^{-cx} \sin(\omega x)\right)\\
+    & =\omega e^{-2cx} \left(\cos^2(\omega x) + \sin^2(\omega x)\right)\\
+    &= \omega e^{-2cx}.
+\end{aligned}
+\end{equation}
+As this equation is non-zero for all $x \in \mathbb{R}$, the two solutions are linearly independent.
+
+\smallskip
+
+\noindent\textbf{(c)}\quad The Green function is given by
+\begin{equation}
+\begin{aligned}
+    G(x,t) &= \frac{y_1(t)y_2(x)-y_1(x)y_2(t)}{W(t)}\\
+    &= \frac{e^{-ct} \cos(\omega t) e^{-cx} \sin(\omega x) - e^{-cx} \cos(\omega x) e^{-ct} \sin(\omega t)}{\omega e^{-2ct}}\\
+    & = \frac{e^{c(t-x)} \left(\sin(\omega \left(t-x\right))\right)}{\omega}\\
+    & = \frac{e^{c(t-x)}}{\sqrt{1-c^2}}  \sin(\sqrt{1-c^2} (t-x)).
+\end{aligned}
+\end{equation}
+
+\pagebreak
+\noindent\textbf{(d)}\quad The solution to the differential equation with $t \in [a,b] $\,is given by the sum of the general solution to $Ty=0$ 
+\begin{equation}
+    y_{\text{CF}}(x) = c_1 e^{-cx} \cos(\sqrt{1-c^2} x) + c_2 e^{-cx} \sin(\sqrt{1-c^2} x),
+\end{equation}
+
+and the particular solution to $Ty=f$, written in terms of the Green function as
+\begin{equation}
+\begin{aligned}
+    y_{\text{particular}}(x) &= \int_{a}^{b} G(x,t)f(t)\,\mathrm{d}t\\
+    & = \int_{a}^{b} f(t) \frac{e^{c(t-x)}}{\sqrt{1-c^2}}  \sin(\sqrt{1-c^2} (t-x))\,\mathrm{d}t.
+\end{aligned}
+\end{equation}
+Therefore, the general solution to the differential equation is given by
+\begin{equation}
+\begin{aligned}
+    y(x) &= y_{\text{CF}}(x) + y_{\text{particular}}(x) \\
+    &= c_1 e^{-cx} \cos(\sqrt{1-c^2} x) + c_2 e^{-cx} \sin(\sqrt{1-c^2} x) \\
+    &\quad+ \int_{a}^{b} f(t) \frac{e^{c(t-x)}}{\sqrt{1-c^2}}  \sin(\sqrt{1-c^2} (t-x))\,\mathrm{d}t.
+\end{aligned}
+\end{equation}
+
+\pagebreak
+\problem{2}{Hermite Polynomials Again}
+\noindent\textbf{(a)}\quad
+On $L^2_{w}(\mathbb{R})$, let $n \geq m$, the inner product of two Hermite polynomials is
+\begin{equation}
+\begin{aligned}
+    \langle H_n,H_m  \rangle &= \int_{\mathbb{R}}\, \mathrm{d}x\, e^{-x^2} H_n(x) H_m(x)\\
+    & = \int_{\mathbb{R}}\, \mathrm{d}x\, (-1)^{n+m}\, e^{x^2} \frac{\mathrm{d}^n}{\mathrm{d}x^n} e^{-x^2} \frac{\mathrm{d}^m}{\mathrm{d}x^m} e^{-x^2},\\
+\end{aligned}
+\end{equation}
+integrating by parts $n$ times, we have
+\begin{equation}
+    \langle H_n,H_m  \rangle = \int_{\mathbb{R}} \, \mathrm{d}x\, \frac{\mathrm{d}^nH_m}{\mathrm{d}x^n}(x)\, e^{-x^2},
+\end{equation}
+which leads to the following two cases:
+\[
+\frac{\mathrm{d}^nH_m}{\mathrm{d}x^n}(x) =
+\begin{cases}
+    0, & n > m,\\
+    2^n n!, & n = m.\\
+\end{cases}
+= \delta_{nm}\, 2^n\, n!.
+\]
+Hence, we have
+\begin{equation}
+    \langle H_n,H_m  \rangle = \delta_{nm}\, 2^n\, n! \int_{\mathbb{R}} \, \mathrm{d}x\, e^{-x^2} = \delta_{nm}\, 2^n\, n! \sqrt{\pi}.
+\end{equation}
+
+\noindent\textbf{(b)}\quad The Hermite polynomials satisfy the following recurrence relation
+\begin{equation}
+\begin{aligned}
+    H_{n+1}(x) &= (-1)^{n+1} e^{x^2} \frac{\mathrm{d}^{n+1}}{\mathrm{d}x^{n+1}} e^{-x^2}\\
+    &= (-1)^{n+1} e^{x^2} \frac{\mathrm{d}}{\mathrm{d}x} \left( \frac{\mathrm{d}^{n}}{\mathrm{d}x^{n}} e^{-x^2} \right)\\
+    &= (-1)^{n+1} e^{x^2} \frac{\mathrm{d}}{\mathrm{d}x} \left( (-1)^n e^{-x^2} H_n(x) \right)\\
+    &= (-1)^{n+1} e^{x^2} \left( -2x e^{-x^2} H_n(x) + e^{-x^2} H_n'(x) \right)\\
+    &= 2x H_n(x) - H_n'(x),
+\end{aligned}
+\end{equation}
+with
+\begin{equation}
+    H_n'(x) = 2x (-1)^n \,e^{x^2}\, \frac{\mathrm{d}^n}{\mathrm{d}x^n} e^{-x^2} + (-1)^n \,e^{x^2}\, \frac{\mathrm{d}^{n+1}}{\mathrm{d}x^{n+1}} e^{-x^2},\\
+\end{equation}
+use the product rule for the $n$-th derivative with$k \geq 2$ are zero,
+\begin{equation}
+    \frac{d^n}{dx^n} (x\,g(x)) = \sum_{k=0}^{n} \binom{n}{k} \frac{d^{n-k}}{dx^{n-k}} x \frac{d^k}{dx^k} g(x) = n \frac{d^{n-1}}{dx^{n-1}} g(x) + x \frac{d^n}{dx^n} g(x)
+\end{equation}
+we have
+\begin{equation}
+\begin{aligned}
+    H_{n+1}(x)&=2x(-1)^n\,e^{x^2}\,\frac{\mathrm{d}^n}{\mathrm{d}x^n}\,e^{-x^2} \\
+    &\quad + (-1)^{n+1}\, 2x e^{x^2}\, \frac{\mathrm{d}^n}{\mathrm{d}x^n} e^{-x^2} + (-1)^{n+1}\, e^{x^2}\, \frac{\mathrm{d}^{n-1}}{\mathrm{d}x^{n-1}} e^{-x^2}\\
+    &= (-1)^{n+1}\, e^{x^2}\, \frac{\mathrm{d}^{n-1}}{\mathrm{d}x^{n-1}} e^{-x^2}\\
+    &= 2n H_{n-1}(x),
+\end{aligned}
+\end{equation}
+substituting this into the recurrence relation, we have
+\begin{equation}
+    H_{n+1}(x) = 2x H_n(x) - 2n H_{n-1}(x).
+\end{equation}
+
+\pagebreak
+\noindent\textbf{(c)}\quad From part (b), we have
+\begin{equation}
+    H'_n = 2nH_{n-1},
+\end{equation}
+let $y = H_n$, we have
+\begin{equation}
+    y' = 2n H_{n-1}.
+\end{equation}
+Differentiating both sides, 
+\begin{equation}
+    y'' = 2n H'_{n-1} = 2n \cdot 2(n-1) H_{n-2} = 4n(n-1) H_{n-2} = 2n(2xH_{n-1} - H_n).
+\end{equation}
+Substituting these into the Hermite differential equation,
+\begin{equation}
+\begin{aligned}
+  y'' - 2xy' + 2ny &= 2n(2xH_{n-1}-H_n) - 4nxH_{n-1} + 2nH_n = 0
+\end{aligned}
+\end{equation}
+
+\noindent\textbf{(d)}\quad To represent the Hermite function with a power series Ansatz,
+\begin{equation}
+    y(x) = \sum_{k=0}^{\infty}a_k \, x^k
+\end{equation} 
+we have
+\begin{equation}
+    y'(x) = \sum_{k=0}^{\infty} (k+1)\,a_{k+1}\,x^{k}, \quad y''(x) = \sum_{k=0}^{\infty} (k+1)(k+2)\,a_{k+2}\,x^k,
+\end{equation}
+and substituting these into the Hermite differential equation, we get
+\begin{equation}
+\begin{aligned}
+    \sum_{k=0}^{\infty} (k+1)(k+2)\,a_{k+2}\,x^k - 2\,\sum_{k=0}^{\infty} (k+1)\,a_{k+1}\,x^{k+1} + 2n \sum_{k=0}^{\infty} a_k \, x^k &= 0.
+\end{aligned}
+\end{equation}
+in the second term, we can shift the index $k \to k-1$ to get
+\begin{equation}
+    \sum_{k=0}^{\infty} (k+1)(k+2)\,a_{k+2}\,x^k - 2\,\sum_{k=1}^{\infty} k\,a_{k}\,x^{k} + 2n \sum_{k=0}^{\infty} a_k \, x^k = 0.
+\end{equation}
+The coefficients of term $X^k$ must vanish
+\begin{equation}
+    (k+1)(k+2)a_{k+2}+2(n-k)a_k = 0 \quad \Rightarrow \quad a_{k+2} = \frac{2(k-n)}{(k+1)(k+2)} a_k.
+\end{equation}
+Equivalently, for the odd terms
+\begin{equation}
+    a_{2k+1} = \frac{2(2k+1-n)}{(2k)(2k+1)} a_{2k-1} = \frac{(n-2k-1)}{(k+1)(2k+1)} a_{2k-1},
+\end{equation}
+and for the even terms
+\begin{equation}
+    a_{2k} = \frac{2(2k-2-n)}{(2k-1)(2k)} a_{2k-2} = \frac{(n-2k+2)}{k(2k-1)} a_{2k-2},
+\end{equation}
+Combining these two results, we have
+\begin{equation}
+    y(x) = a_0 \, \sum_{k=1}^{\infty} \left(\prod_{r=0}^{k-1} \frac{2(2r-2-n)}{(2r-1)(2r)}\right)\,x^{2k-1} \, + \, 
+    a_1\, \sum_{k=1}^{\infty} \left(\prod_{r=0}^{k-1} \frac{n-2r+2}{r(2r-1)}\,\right) x^{2k-2}.
+\end{equation}
+
+\pagebreak
+
+\noindent\textbf{(e ???Do Not Understand)}\quad 
+We are seeking for a solution of the form
+\begin{equation}
+    y(x) = 2x\,v(x),
+\end{equation}
+substituting this into the Hermite differential equation, we have
+
+\begin{equation}
+\begin{split}
+    2x\,v(x)'' + 4v(x)' - 4x\,v(x) -4x^2\,v(x)' + 4nx\,v(x)
+ &= 0\\
+    2x\,v(x)'' + (4-4x^2)\,v(x)' + 4(n-1)x\,v(x) &= 0\\
+    v(x)'' + \left(\frac{2}{x}-2x\right)\,v(x)' + 2(n-1)\,v(x) &= 0,\\
+  \text{as }y=2x \,\text{independently satisfies the Hermite differential equation, we have } \\
+  v(x)'' + \left(\frac{2}{x}-2x\right)\,v(x)' &= 0.
+\end{split} 
+\end{equation}
+Set $v'(x) = u(x)$, we have
+\begin{equation}
+    u'(x) + \left(\frac{2}{x}-2x\right)\,u(x) = 0,
+\end{equation}
+which is a first-order linear ODE, and the solution is given by
+\begin{equation}
+    u(x) = C \, e^{-\int \left(\frac{2}{x}-2x\right)\,dx} = C \, e^{-\left(2\ln|x| - x^2\right)} = C \, e^{x^2} x^{-2}.
+\end{equation}
+Integrating both sides, we have
+\begin{equation}
+    v(x) = \int u(x)\,dx = \int C \, e^{x^2} x^{-2}\,dx.
+\end{equation}
+
+\smallbreak
+\smallbreak
+Correction: For $n=1, y=H_1(x)=2x, x_2=1, \alpha_1(x) = -2x$,
+
+$\longrightarrow$ $u(x) = \frac{1}{4x^2}e^{\int_0^x 2t dt} = \frac{e^{x^2}}{4x^2} = \sum_k\frac{x^{2k-2}}{4k!}$
+
+
+\pagebreak
+\problem{3}{Hermitian and Unitary Operators}
+\noindent\textbf{(a)}\quad From the definition of Hermitian operators, we have,
+\begin{align}
+    [T,S] = T \, \circ \, S - S\, \circ \, T \qquad \Longrightarrow \\
+    T \, \circ \, S = S^{\dagger} \, \circ \, T^{\dagger} = (T \, \circ \, S)^{\dagger}. 
+\end{align}
+Hence, the commutator of the two Hermitian operators is also Hermitian.
+
+\smallbreak
+\smallbreak
+\begin{equation}
+\begin{aligned}
+    [x, iD] &= -i \ne 0,\\
+    ixD = 
+\end{aligned}
+\end{equation}
+
+
+\noindent\textbf{(b)}\quad For anti-Hermitian operators $T$, 
+\begin{equation}
+    T^{\dagger} = -T,
+\end{equation}
+by multiplying both sides by $\mp \mathrm{i}$,
+\begin{equation}
+    \mp \mathrm{i} (T)^{\dagger} = \left(\pm \mathrm{i} T \right)^{\dagger} = \pm \mathrm{i} T,
+\end{equation}
+so $\pm \mathrm{i} T$ is Hermitian.
+
+\smallskip
+\smallskip
+
+For every linear operator $T$, we can write it as a sum of Hermitian and anti-Hermitian operators,
+\begin{equation}
+    T_{\pm} = \frac{1}{2} (T \pm T^{\dagger}),
+\end{equation}
+we have
+\begin{equation}
+    T = T_{+} + T_{-},
+\end{equation}
+while $T_{+}$ is Hermitian and $T_{-}$ is anti-Hermitian.
+
+\pagebreak
+\noindent\textbf{(c)}\quad We set the interval of all the functions to be $[t_0, t_0+T]$, and the operator $\mathcal{L}$ is said to be Hermitian over this interval iff 
+\begin{equation}
+    \int_{t_0}^{t_0+T} \, f^*(t) \, \mathcal{L} g(t) \, dt = \int_{t_0}^{t_0+T} \, (\mathcal{L} f(t))^* \, g(t) \, dt,
+    \label{eq:Hermitian}
+\end{equation}
+
+
+
+\textbf{(i)} \quad Substitution into the LHS of \eqref{eq:Hermitian}, we have
+\begin{equation}
+    \int_{t_0}^{t_0+T} \, f^*(t) \, i \frac{d}{dt} g(t) \, dt = i \left[ f^*(t) g(t) \right]_{t_0}^{t_0+T} - i \int_{t_0}^{t_0+T} \, \frac{d}{dt} f^*(t) \, g(t) \, dt,
+\end{equation}
+so $i \frac{d}{dt}$ is Hermitian if the boundary condition condition vanishes, which is
+\begin{equation}
+    \left[ f^*(t) g(t) \right]_{t_0}^{t_0+T} = 0.
+\end{equation}
+
+\smallbreak
+\smallbreak
+
+\textbf{(ii)} \quad Substitution into the LHS of \eqref{eq:Hermitian}, we have, with $t \in \mathbb{R}$,
+\begin{equation}
+    \int_{t_0}^{t_0+T}\, f^*(t) t^k g(t) \,dt = \int_{t_0}^{t_0+T}\, (t^k f(t))^* g(t) \,dt,
+\end{equation}
+so $x^k$ is Hermitian.
+
+\smallbreak
+\smallbreak
+\textbf{(iii)} \quad The derivative operator $\frac{d}{dt}$ is anti-Hermitian, as we have
+\begin{equation}
+   \int_{t_0}^{t_0+T} \, f^*(t) \, \frac{d}{dt} g(t) \, dt = \left[ f^*(t) g(t) \right]_{t_0}^{t_0+T} - \int_{t_0}^{t_0+T} \, \frac{d}{dt} f^*(t) \, g(t) \, dt,
+\end{equation} 
+under the boundary condition $\left[ f^*(t) g(t) \right]_{t_0}^{t_0+T} = 0$, while mutliplication by $x^2$ is Hermitian.
+
+So the operator $\frac{d}{dx}$ is anti-Hermitian part, while the operator $x^2$ is Hermitian part, and the sum of these two operators is neither Hermitian nor anti-Hermitian.
+
+\smallbreak
+\smallbreak
+\textbf{(iv)} \quad Substitution into the LHS of \eqref{eq:Hermitian}, and using integration by parts three times, we have
+\begin{equation}
+\begin{aligned}
+    &\int_{t_0}^{t_0+T} \, f^*(t)\,i\frac{d^3}{dx^3} g(t) \, dt = \left[i f^*(t) \frac{d^2}{dx^2} g(t)\right]_{t_0}^{t_0+T} - \int_{t_0}^{t_0+T} \, i \frac{d}{dx} f^*(t) \, \frac{d^2}{dx^2} g(t) \, dt \\
+    &= \left[i f^*(t) \frac{d^2}{dx^2} g(t)\right]_{t_0}^{t_0+T} - \left[i \frac{d}{dx} f^*(t) \frac{d}{dx} g(t)\right]_{t_0}^{t_0+T} + \int_{t_0}^{t_0+T} \, i \frac{d^2}{dx^2} f^*(t) \, \frac{d}{dx} g(t) \, dt\\
+    &= \left[i f^*(t) \frac{d^2}{dx^2} g(t)\right]_{t_0}^{t_0+T} - \left[i \frac{d}{dx} f^*(t) \frac{d}{dx} g(t)\right]_{t_0}^{t_0+T} + \left[i \frac{d^2}{dx^2} f^*(t) g(t)\right]_{t_0}^{t_0+T} \\&- \int_{t_0}^{t_0+T} \, i \frac{d^3}{dx^3} f^*(t) g(t) \, dt,\\
+    &= \left[i f^*(t) \frac{d^2}{dx^2} g(t) - i \frac{d}{dx} f^*(t) \frac{d}{dx} g(t) + i \frac{d^2}{dx^2} f^*(t) g(t)\right]_{t_0}^{t_0+T} - \int_{t_0}^{t_0+T} \, i \frac{d^3}{dx^3} f^*(t) g(t) \, dt,
+\end{aligned}
+\end{equation}
+when the boundary terms vanish,
+\begin{equation}
+    \int_{t_0}^{t_0+T} \, f^*(t)\,i\frac{d^3}{dx^3} g(t) \, dt = \int_{t_0}^{t_0+T} \, \left( i \frac{d^3}{dx^3} f^*(t) \right)^* g(t) \, dt,
+\end{equation}
+so $i \frac{d^3}{dx^3}$ is Hermitian.
+
+\pagebreak
+\textbf{(v)} \quad \noindent\textbf{(v)}\quad
+Substitution into the LHS of (43), and using integration by parts, we have
+\begin{align}
+\int_{t_0}^{t_0+T} f^*(t)\,it\frac{d}{dt}g(t)\,dt
+&= i\left[t f^*(t)g(t)\right]_{t_0}^{t_0+T}
+   - \int_{t_0}^{t_0+T} i\frac{d}{dt}\bigl(tf^*(t)\bigr)g(t)\,dt \notag\\
+&= i\left[t f^*(t)g(t)\right]_{t_0}^{t_0+T}
+   - \int_{t_0}^{t_0+T}
+   i\left(f^*(t)+t\frac{d}{dt}f^*(t)\right)g(t)\,dt.
+\end{align}
+when the boundary term vanishes,
+\begin{align}
+\int_{t_0}^{t_0+T} f^*(t)\,it\frac{d}{dt}g(t)\,dt
+&= -i\int_{t_0}^{t_0+T}f^*(t)g(t)\,dt
+   -i\int_{t_0}^{t_0+T}t\frac{d}{dt}f^*(t)g(t)\,dt \notag\\
+&= \int_{t_0}^{t_0+T}
+   \left(it\frac{d}{dt}f(t)-if(t)\right)^*g(t)\,dt.
+\end{align}
+Thus
+\[
+\left(it\frac{d}{dt}\right)^\dagger
+=it\frac{d}{dt}-i,
+\]
+so \(it\frac{d}{dt}\) is not Hermitian.
+
+We can write it as a sum of a Hermitian and an anti-Hermitian operator:
+\begin{equation}
+it\frac{d}{dt}
+=
+\underbrace{\left(it\frac{d}{dt}+\frac{i}{2}\right)}_{\text{Hermitian}}
++
+\underbrace{\left(-\frac{i}{2}\right)}_{\text{anti-Hermitian}}.
+\end{equation}
+
+\smallbreak
+\smallbreak
+\noindent\textbf{(d)}\quad For a unitary operator $U$, we have
+\begin{equation}
+    U^{\dagger}U = I,
+\end{equation}
+when it operates on an eigenvecor $\boldsymbol{v}$, we have
+\begin{equation}
+    U(\boldsymbol{v}) = \lambda \boldsymbol{v},
+\end{equation}
+hence,
+\begin{equation}
+\begin{aligned}
+    U^{\dagger}(\boldsymbol{v})\,U(\boldsymbol{v}) &= (\lambda \boldsymbol{v})^{\dagger} \,(\lambda \boldsymbol{v}) = I\\
+    &\Longrightarrow\\
+    \lambda^* \lambda \, &\boldsymbol{v}^{\dagger} \boldsymbol{v} = 1,\\
+\end{aligned}
+\end{equation}
+finally, $|\lambda|^2 = 1$, as
+\begin{equation}
+    |\lambda|^2 = 1 \quad \Longrightarrow \quad |\lambda| = 1.
+\end{equation}
+
+\noindent\textbf{(e)}\quad For the inner product,
+\begin{equation}
+\begin{aligned}
+    \langle f,g  \rangle &= \int_{\mathbb{R}}\, \mathrm{d}x\, f^*(x) g(x),\\
+    \langle T_a f, T_ag  \rangle &= \int_{\mathbb{R}}\, \mathrm{d}x\, (T_a f)^*(x) (T_a g)(x)\\
+    &= \int_{\mathbb{R}}\, \mathrm{d}x\, f^*(x-a) g(x-a)\\
+    &= \int_{\mathbb{R}}\, \mathrm{d}y\, f^*(y) g(y)\\
+    &= \langle f,g  \rangle.
+\end{aligned}
+\end{equation}
+
+The translation operator $T_a$ is unitary, as it preserves the inner product.
+
+\pagebreak
+\problem{4}{Quantum Harmonic Oscillator}
+\noindent\textbf{(a)}\quad Substituting the operator $\mathcal{H}$ into the $\mathcal{H}\psi$,
+\begin{equation}
+\begin{aligned}
+    \mathcal{H}\psi &= \frac{1}{2} \left(-\frac{\mathrm{d^2}}{\mathrm{d}x^2} + x^2\right) \psi\\
+    &= \frac{1}{2} \left(-\frac{\hbar}{m\omega}\frac{\mathrm{d^2}}{\mathrm{d}\xi^2} + \frac{m\omega}{\hbar} \xi^2\right) \psi\\
+    &= \frac{H}{\hbar \omega} \psi\\
+    &= \epsilon \psi
+\end{aligned}
+\end{equation} 
+
+Physically, the first and second terms in the Hamiltonian represent the kinetic and potential energy of the quantum harmonic oscillator, respectively and they are dimensionless. The result is easier to solve in dimensionless form, as it reduces the number of parameters in the problem.
+
+\smallbreak
+\smallbreak
+\noindent\textbf{(b)} \quad From the Hermite differential equation, we have
+\begin{equation}
+\begin{aligned}
+    &y''-2xy'+(2\epsilon-1)y = 0,\\
+    \mathcal{H}\psi &= \frac{1}{2} \left(-\frac{\mathrm{d^2}}{\mathrm{d}x^2} + x^2\right) y(x)e^{-x^2/2}\\
+    &= \frac{1}{2} \left[ e^{-x^2/2} \left(-y''+2xy'+x^2y\right) +x^2ye^{-x^2/2} \right]\\
+    &= \frac{1}{2} e^{-x^2/2} (-y''+2xy'+2x^2y)\\
+    &= \epsilon y e^{-x^2/2},
+\end{aligned}
+\end{equation}
+after rearranging,
+\begin{equation}
+    y''-2xy'+(2\epsilon-1)y = 0
+\end{equation}
+
+\smallbreak
+\noindent\textbf{(c)} \quad Put the hermite function $h_n(x)$ into the Hermite differential equation,
+\begin{equation}
+\begin{aligned}
+    (H_n''-2xH_n'+x^2H_n) -2x(H_n'&-xH_n)+(2\epsilon -1)H_n = 0,\\
+\end{aligned}
+\end{equation}
+also we have for Hermite polynomials,
+\begin{equation}
+    H_n''-2xH_n'+2nH_n = 0,
+\end{equation}
+hence, we have
+\begin{equation}
+    2nH_n - 2x(-xH_n) + (2\epsilon -1)H_n = 0 \quad \Longrightarrow \quad 2n + 2\epsilon -1 = 0 \quad \Longrightarrow \quad \epsilon = n + \frac{1}{2}.
+\end{equation}  
+
+\pagebreak
+\noindent\textbf{(d)} \quad 
+\begin{equation}
+\begin{aligned}
+    N f(x) = a^{\dagger}a f(x) &= \frac{1}{2} (x + \tfrac{d}{dx})(xf(x)-f'(x)) \\
+    &= \frac{1}{2}[(x^2-1)f(x)-f''(x)].
+\end{aligned}
+\end{equation}
+And for $\mathcal{H}$,
+\begin{equation}
+\begin{aligned}
+    \mathcal{H}f(x) &= \frac{1}{2}(-\tfrac{d^2}{dx^2} + x^2)f(x)\\
+    &= \frac{1}{2}[x^2f(x)-f''(x)]\\
+    &= (N + \tfrac{1}{2})f(x).
+\end{aligned}
+\end{equation}
+
+\smallbreak
+\noindent\textbf{(e)} \quad 
+Let $|n\rangle := |h_n\rangle$. Using the relations for the Hermite polynomials from question 2(b), we have
+\begin{equation}
+\begin{aligned}
+a h_n(x)
+&= \frac{1}{\sqrt{2}}\left(x+\frac{d}{dx}\right)
+   \frac{H_n(x)e^{-x^2/2}}{A_n}\\
+&= \frac{e^{-x^2/2}}{\sqrt{2}A_n}
+   \left(xH_n(x)+H_n'(x)-xH_n(x)\right)\\
+&= \frac{e^{-x^2/2}}{\sqrt{2}A_n}2nH_{n-1}(x)\\
+&= \sqrt{n}\,h_{n-1}(x).
+\end{aligned}
+\end{equation}
+Therefore,
+\begin{equation}
+a|n\rangle = \sqrt{n}\,|n-1\rangle.
+\end{equation}
+
+Similarly,
+\begin{equation}
+\begin{aligned}
+a^\dagger h_n(x)
+&= \frac{1}{\sqrt{2}}\left(x-\frac{d}{dx}\right)
+   \frac{H_n(x)e^{-x^2/2}}{A_n}\\
+&= \frac{e^{-x^2/2}}{\sqrt{2}A_n}
+   \left(xH_n(x)-H_n'(x)+xH_n(x)\right)\\
+&= \frac{e^{-x^2/2}}{\sqrt{2}A_n}
+   \left(2xH_n(x)-2nH_{n-1}(x)\right)\\
+&= \frac{e^{-x^2/2}}{\sqrt{2}A_n}H_{n+1}(x)\\
+&= \sqrt{n+1}\,h_{n+1}(x).
+\end{aligned}
+\end{equation}
+Therefore,
+\begin{equation}
+a^\dagger|n\rangle = \sqrt{n+1}\,|n+1\rangle.
+\end{equation}
+
+Since $N=a^\dagger a$, we have
+\begin{equation}
+N|n\rangle
+= a^\dagger\left(\sqrt{n}\,|n-1\rangle\right)
+= n|n\rangle.
+\end{equation}
+From part (d), $\mathcal{H}=N+\frac{1}{2}$, hence
+\begin{equation}
+\mathcal{H}|n\rangle
+= \left(n+\frac{1}{2}\right)|n\rangle.
+\end{equation}
+
+\pagebreak
+\problem{5}{Sturm-Liouville Operators}
+\noindent\textbf({a}) \quad Abbreviating $D = \tfrac{d}{dx}$, for 
+\begin{equation}
+    p(x) = \exp{\left(\int_{x_0}^{x}dt \frac{\alpha_1(t)}{\alpha_2(t)}\right)}, \qquad
+    \omega(x) = \frac{p(x)}{\alpha_2(x)}, \qquad
+    q(x) = \alpha_0(x)\omega(x),
+\end{equation}
+we can write the Sturm-Liouville operator as
+\begin{equation}
+    T_{SL} = \frac{p}{\omega}D^2 + \frac{\alpha_1p}{\alpha_2\omega}D + \alpha_0 = \alpha_2D^2 + \alpha_1D + \alpha_0 = T.
+\end{equation}
+
+\noindent\textbf({b}) \quad For any second-order differential operator of the form
+\begin{equation}
+    p(x)y'' + r(x)y' + q(x)y + \lambda \rho(x) y = 0
+    \label{eq:SL}
+\end{equation}
+can be converted into the Sturm-Liouville form by multiplying both sides by an integrating factor,
+\begin{equation}
+    F(x) = \exp\left(\int^x \frac{r(u)-p'(u)}{p(u)}\,du\right).
+\end{equation}
+
+Then $\eqref{eq:SL}$ can be written as
+\begin{equation}
+    \frac{d}{dx}\left(p(x)F(x)y'\right) + \left(q(x)F(x)+\lambda \rho(x) F(x)\right)y = 0,
+\end{equation}
+which is in the Sturm-Liouville form.
+\smallbreak
+
+For the Legendre differential equation,
+\begin{equation}
+    (1-x^2)y'' - 2xy' + \ell(\ell + 1)y = 0,
+\end{equation}
+first two terms are a prouct derivative, 
+\begin{equation}
+    \frac{d}{dx}\left((1-x^2)y'\right) + \ell(\ell + 1)y = 0,
+\end{equation}
+which is in the Sturm-Liouville form with
+\begin{equation}
+    T_{SL} = -\frac{d}{dx}\left((1-x^2)\frac{d}{dx}\right), \qquad \lambda = \ell(\ell + 1).
+\end{equation}
+
+\smallbreak
+For the Laguerre differential equation,
+\begin{equation}
+    xy'' + (1-x)y' + v y = 0,
+\end{equation}
+the required integrating factor is
+\begin{equation}
+    F(x) = \exp \left( \int^x -1 \mathrm{d}u \right) = \exp(-x).
+\end{equation}
+
+Thus, the Laguerre equation becomes
+\begin{equation}
+    x e^{-x} y'' + (1-x)e^{-x}y' + v e^{-x}y = (xe^{-x}y')' + ve^{-x}y = 0
+\end{equation}
+
+\smallbreak
+For the Hermite differential equation,
+\begin{equation}    
+    y'' - 2xy' + 2vy = 0,
+\end{equation}
+the required integrating factor is
+\begin{equation}
+    F(x) = \exp \left( \int^x -2u \mathrm{d}u \right) = \exp(-x^2).
+\end{equation}
+Thus, the Hermite equation becomes
+\begin{equation}
+    e^{-x^2}y'' - 2xe^{-x^2}y' + 2ve^{-x^2}y = (e^{-x^2}y')' + 2ve^{-x^2}y = 0
+\end{equation}
+
+\pagebreak
+
+\noindent\textbf{(c)} \quad For the Legendre differential equation, the interval is $[-1,1]$, and the weight function is $\rho(x) = 1$. $p(x) = 1-x^2$ is positive in the interval $(-1,1)$, and $p(\pm 1) = 0$. Hence the boundary terms vanish, and the Legendre operator is Hermitian.
+\smallbreak
+
+For the Laguerre differential equation, the interval is $[0,\infty)$, and the weight function is $\rho(x) = e^{-x}$. $p(x) = xe^{-x}$ is positive in the interval $(0,\infty)$, and $p(0) = 0$. Hence the boundary terms vanish, and the Laguerre operator is Hermitian.
+\smallbreak
+
+For the Hermite differential equation, the interval is $(-\infty,\infty)$, and the weight fucntion is $\rho(x) = e^{-x^2}$. $p(x) = e^{-x^2}$ is positive in the interval $(-\infty,\infty)$, and $p(\pm \infty) = 0$. Hence the boundary terms vanish, and the Hermite operator is Hermitian.
+
+\pagebreak
+\problem{6}{Bessel Functions}
+\noindent\textbf{(a)} 
+\begin{equation}
+    y'' + \frac{1}{x}y' + \left(1 - \frac{v^2}{x^2}\right)y = 0.
+\end{equation}
+Try solution of the form $y = \sum_{k=0}^{\infty} a_k x^{k+\alpha}$, and mutiplying the resulting equation by $x^{2-\alpha}$, we obtain
+\begin{equation}
+    \sum_{k=0}^{\infty}[(\sigma + k)(\sigma + k -1) + (\sigma + k) -v^2]a_k x^k + \sum_{k=0}^{\infty} a_k x^{k+2} = 0.
+\end{equation}
+
+Considering the coefficient of $x^0$, we have the indicial equation
+\begin{equation}
+    \sigma^2 - v^2 = 0 \quad \Longrightarrow \quad \sigma = \pm v.
+\end{equation} 
+For coefficients of higher powers of $x$, we find
+\begin{equation}
+\begin{aligned}
+    [(\sigma + 1)^2 - v^2]a_1 &= 0,\\
+    [(\sigma + n)^2 - v^2]a_n + a_{n-2} &= 0  \qquad \text{for }n \ge 2,\\
+\end{aligned}
+\end{equation}
+after substituting $\sigma = \pm v$, we have
+\begin{equation}
+\begin{aligned}
+    (1 \pm 2v)a_1 &= 0,\\
+    n(n \pm 2v)a_n + a_{n-2} &= 0  \qquad \text{for }n \ge 2.
+    \label{eq:recurrence}
+\end{aligned}
+\end{equation}
+For $v = m/2$ with $m = 1,3,5,\ldots$, we have $a_1 = 0$, and the recurrence relation of the odd terms is $0$, and the even terms are given by
+\begin{equation}
+    a_{n} = -\frac{a_{n-2}}{n(n \pm m)}.
+\end{equation}
+Thus, in general, for non-integer $v$ we have from $\eqref{eq:recurrence}$ that the even and odd terms are independent, and we have two linearly independent solutions
+\begin{equation}
+\begin{aligned}
+    a_n =& -\frac{1}{n (n \pm 2v)}a_{n-2} \qquad &\text{for }n = 2, 4, 6,\ldots\\
+    =&0 & \text{for }n = 1, 3, 5,\ldots 
+\end{aligned}
+\end{equation}
+
+\smallbreak
+\smallbreak
+\noindent\textbf{(b)} \quad We obtain the two solutions
+\begin{equation}
+    y_{\pm v}(x) = x^{\pm v} \left[a_0 - \frac{x^2 a_0}{2(2 \pm 2v)}  + \frac{x^4a_0^2}{2 \times 4(2 \pm 2v)(4 \pm 2v)} - \cdots \right].
+\end{equation}
+We choose $a_0 = (2^{\alpha} \Gamma(\alpha + 1))^{-1}$, the complete series solution is given by
+\begin{equation}
+\begin{aligned}
+    J_{v}(x) &= \frac{1}{\Gamma(v+1)} \left(\frac{x}{2}\right)^v \left[1 - \frac{x^2}{2(2v+2)} + \frac{x^4}{2 \times 4(2v+2)(4v+2)} - \cdots \right]\\
+    &= \sum_{k=0}^{\infty} \frac{(-1)^k}{k! \Gamma(k+v+1)} \left(\frac{x}{2}\right)^{2k+v},\\
+    \label{eq:Bessel}
+\end{aligned}
+\end{equation}
+and replacing $v$ by $-v$ gives $J_{-v}(x)$.
+
+\pagebreak
+\noindent\textbf{(c)} \quad The general solution of Bessel's equation, from part (b), is given by
+\begin{equation}
+    y(x) = c_1 J_v(x) + c_2 J_{-v}(x),
+\end{equation}
+where $c_1$ and $c_2$ are arbitrary constants. Here choosing $v = 1/2$, 
+\begin{equation}
+    y(x) = c_1 J_{1/2}(x) + c_2 J_{-1/2}(x).
+\end{equation}
+Noted from \eqref{eq:Bessel}, 
+\begin{equation}
+    J_{\pm 1/2}(x) = x^{\pm 1/2} \sum_{k=0}^{\infty} \frac{(-1)^k x^{2k}}{2^{2k \pm 1/2}\,k!\, \Gamma(1 + k \pm \frac{1}{2})}.
+\end{equation}
+Using the fact that $\Gamma(x + 1) = x \Gamma(x)$ and $ \Gamma(1/2) = \sqrt(\pi)$, we find that, for $v = 1/2$,
+\begin{equation}
+\begin{aligned}
+J_{\frac{1}{2}}(x)
+&= \frac{\left(\frac{1}{2}x\right)^{1/2}}{\Gamma\left(\frac{3}{2}\right)}
+ - \frac{\left(\frac{1}{2}x\right)^{5/2}}{1!\,\Gamma\left(\frac{5}{2}\right)}
+ + \frac{\left(\frac{1}{2}x\right)^{9/2}}{2!\,\Gamma\left(\frac{7}{2}\right)}
+ - \cdots\\
+&= \frac{\left(\frac{1}{2}x\right)^{1/2}}
+         {\left(\frac{1}{2}\right)\sqrt{\pi}}
+ - \frac{\left(\frac{1}{2}x\right)^{5/2}}
+         {1!\left(\frac{3}{2}\right)\left(\frac{1}{2}\right)\sqrt{\pi}}
+ + \frac{\left(\frac{1}{2}x\right)^{9/2}}
+         {2!\left(\frac{5}{2}\right)\left(\frac{3}{2}\right)
+         \left(\frac{1}{2}\right)\sqrt{\pi}}
+ - \cdots\\
+&= \frac{\left(\frac{1}{2}x\right)^{1/2}}
+         {\left(\frac{1}{2}\right)\sqrt{\pi}}
+   \left(1-\frac{x^2}{3!}+\frac{x^4}{5!}-\cdots\right)\\
+&= \frac{\left(\frac{1}{2}x\right)^{1/2}}
+         {\left(\frac{1}{2}\right)\sqrt{\pi}}
+   \frac{\sin x}{x}\\
+&= \sqrt{\frac{2}{\pi x}}\,\sin x,
+\end{aligned}
+\end{equation}
+whereas for $v = -1/2$,
+\begin{equation}
+\begin{aligned}
+J_{-\frac{1}{2}}(x)
+&= \frac{\left(\frac{1}{2}x\right)^{-1/2}}{\Gamma\left(\frac{1}{2}\right)}
+ - \frac{\left(\frac{1}{2}x\right)^{3/2}}{1!\,\Gamma\left(\frac{3}{2}\right)}
+ + \frac{\left(\frac{1}{2}x\right)^{7/2}}{2!\,\Gamma\left(\frac{5}{2}\right)}
+ - \cdots\\
+&= \frac{\left(\frac{1}{2}x\right)^{-1/2}}{\sqrt{\pi}}
+   \left(1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots\right)\\
+&= \sqrt{\frac{2}{\pi x}}\,\cos x.
+\end{aligned}
+\end{equation}
+
+
+\end{document}
